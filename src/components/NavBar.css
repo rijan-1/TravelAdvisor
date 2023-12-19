@@ -1,11 +1,110 @@
-.navbar{
+.Menu{
+    margin-left: 80px;
+    color: white;
+    padding-bottom: -40px;
+    
+.MenuIcon{
 
-    width: 100px;
-    height: 200px;
+    position: relative;
+    top: 100px;
+    color: rgba(0,0,0,0.5);
+
+
+}
+}
+.MenuIcon{
+    width: 150px;
+    height:30px; 
+    margin-left: 30px;
+    margin-top: 30px;
+    position: relative;
+    border-radius: 7px;
+    padding: 1em 2em;
+    padding-bottom: 40px;
+  border: none;
+  border-radius: 5px;
+  font-weight:900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: black;
+  transition: all 1000ms;
+  font-size: 13px;
+ 
+  overflow: hidden;
+  outline: 2px solid #2c9caf;
+  height:25px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-top: 0px;
+  margin-top: 20px;
+
+    
+}
+.navbar{
+    
+
+    width: 220px;
+    height: 500px;
     background-color: black;
+    gap: 20px;
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5%;
+    margin-top: 80px;
+    margin-left: -180px;
+
 }
 
 .navbar button{
-    width: 200px
-    height: 
+    width: 150px;
+    height:30px; 
+    margin-left: 30px;
+    margin-top: 30px;
+    position: relative;
+    border-radius: 7px;
+    padding: 1em 2em;
+    padding-bottom: 40px;
+  border: none;
+  border-radius: 5px;
+  font-weight:900;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: black;
+  transition: all 1000ms;
+  font-size: 13px;
+ 
+  overflow: hidden;
+  outline: 2px solid #2c9caf;
+  height:25px;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-top: 0px;
+  margin-top: 20px;
+  
+    
 }
+
+.navbar button:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+    outline: 2px solid #04378f;
+    box-shadow: 4px 5px 17px -4px #268391;
+    cursor: pointer;
+  }
+  
+  .navbar button::before {
+    content: "";
+    position: absolute;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #04378f;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
+  }
+  
+  .navbar button:hover::before {
+    width: 250%;
+  }

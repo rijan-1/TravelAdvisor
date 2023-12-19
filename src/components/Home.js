@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FormattedData } from '../WeatherService';
 import Descriptions from '../components/descriptions';
-
+import './Home.css'
 export const HomePage=()=>{
 
     const [city, setCity]= useState('London')
@@ -40,7 +40,7 @@ export const HomePage=()=>{
   
   
                 <div className='section section__inputs'>
-                  <input onKeyDown={onKeyDown}tyle={{ height: '25px', width: '200px', textSize: '30px' }} type='text' name='city' placeholder='enter city...' /><button className='button'>C°</button>
+                  <input onKeyDown={onKeyDown}tyle={{ height: '25px', width: '200px', textSize: '30px' }} type='text' name='city' placeholder='enter city...' /><button className='buttonunits'>C°</button>
   
                 </div>
   
