@@ -1,4 +1,9 @@
 import './descriptions.css'
+import { TiWeatherWindy } from "react-icons/ti";
+import { FaArrowDown,FaArrowUp  } from "react-icons/fa";
+import { WiHumidity } from "react-icons/wi";
+import { FaWeightHanging } from "react-icons/fa6";
+
 
 
 
@@ -14,6 +19,8 @@ const Descriptions = ({ weather, units }) => {
 
             title: 'min',
             data: weather.temp_min.toFixed(),
+            icon: <FaArrowDown />,
+         
             unit: tempUnit
 
         },
@@ -22,6 +29,7 @@ const Descriptions = ({ weather, units }) => {
 
             title: 'max',
             data: weather.temp_max.toFixed(),
+            icon: <FaArrowUp />,
             unit: tempUnit
 
         }
@@ -39,6 +47,8 @@ const Descriptions = ({ weather, units }) => {
 
             title: 'pressure',
             data: weather.pressure,
+            icon: <FaWeightHanging />,
+            
             unit: 'hPa'
 
         },
@@ -47,6 +57,7 @@ const Descriptions = ({ weather, units }) => {
 
             title: 'humidity',
             data: weather.humidity,
+            icon: <WiHumidity />,
             unit: '%'
         },
         {
@@ -54,17 +65,18 @@ const Descriptions = ({ weather, units }) => {
 
             title: 'wind speed'
             , data: weather.speed.toFixed(),
+            icon: <TiWeatherWindy />,
             unit: windUnit,
         }
     ]
     return (
         <div className='section__descriptions'>
 
-            {cards.map(({ id, title, data, unit })=>(
+            {cards.map(({ id, title, data, unit , icon})=>(
             <div key={id} className='card'>
 
                 <div className='description__card-icon'>
-                    <small>{title}</small>
+                    <small>{title} {icon}</small>
 
 
                 </div>

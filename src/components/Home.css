@@ -7,12 +7,14 @@
     text-transform: uppercase;
     color: #2c9caf;
     transition: all 1000ms;
-    font-size: 15px;
+    font-size: 20px;
     position: relative;
     overflow: hidden;
     outline: 2px solid #2c9caf;
     height:25px;
     justify-content: center;
+    padding-bottom: 25px;
+    padding-top: 10px;
     
   }
   

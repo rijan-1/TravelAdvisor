@@ -14,10 +14,8 @@ export const HomePage=()=>{
         const data = await FormattedData(city, units)
         setUseWeather(data)
        
-  
-   
        
-      
+
       }
       handleFormattedData()
     } , [units, city])

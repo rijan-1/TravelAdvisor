@@ -2,7 +2,7 @@
     margin-left: 80px;
     color: white;
     padding-bottom: -40px;
-    
+}
 .MenuIcon{
 
     position: relative;
@@ -11,35 +11,65 @@
 
 
 }
-}
-.MenuIcon{
-    width: 150px;
-    height:30px; 
-    margin-left: 30px;
-    margin-top: 30px;
-    position: relative;
-    border-radius: 7px;
-    padding: 1em 2em;
-    padding-bottom: 40px;
-  border: none;
-  border-radius: 5px;
-  font-weight:900;
-  letter-spacing: 5px;
-  text-transform: uppercase;
-  color: black;
-  transition: all 1000ms;
-  font-size: 13px;
- 
-  overflow: hidden;
-  outline: 2px solid #2c9caf;
-  height:25px;
-  justify-content: center;
-  background-color: rgba(255, 255, 255, 0.6);
-  border-top: 0px;
-  margin-top: 20px;
 
-    
-}
+.MenuIcon {
+  --color: #1917a3;
+  --color2: rgba(10, 25, 30,0.4);
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .10px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  background-color: rgba(0, 0, 0, 0.8);
+  top: 20px
+ }
+ 
+ .MenuIcon::after, .btn::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+ }
+ 
+ .MenuIcon::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .MenuIcon:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+ }
+ 
+ .MenuIcon:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+ }
+ 
+ .MenuIcon:hover {
+  color: var(--color2);
+ }
+ 
+ .MenuIcon:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+ }
+
 .navbar{
     
 
@@ -51,7 +81,7 @@
     background-color: rgba(0,0,0,0.5);
     border-radius: 5%;
     margin-top: 80px;
-    margin-left: -180px;
+    margin-left: -100px;
 
 }
 
