@@ -1,95 +1,61 @@
-import './descriptions.css'
-import { TiWeatherWindy } from "react-icons/ti";
-import { FaArrowDown,FaArrowUp  } from "react-icons/fa";
-import { WiHumidity } from "react-icons/wi";
-import { FaWeightHanging } from "react-icons/fa6";
+import { FaArrowDown } from "react-icons/fa6";
+import { FaArrowUp } from "react-icons/fa";
+import './description.css'
+export const Descriptions = (props, units) => {
+   const tempunits = units ==='metric'? 'C':'F'
 
-
-
-
-const Descriptions = ({ weather, units }) => {
-
-    const tempUnit = units === 'metric' ? '°C' : '°F'
-    const windUnit = units === 'metric' ? 'm/s' : 'm/h'
-
-    const cards = [
-
-        {
-            id: 1,
-
-            title: 'min',
-            data: weather.temp_min.toFixed(),
-            icon: <FaArrowDown />,
-         
-            unit: tempUnit
-
-        },
-        {
-            id: 2,
-
-            title: 'max',
-            data: weather.temp_max.toFixed(),
-            icon: <FaArrowUp />,
-            unit: tempUnit
-
-        }
-        ,
-        {
-            id: 3,
-
-            title: 'feels like',
-            data: weather.feels_like.toFixed(),
-            unit: tempUnit,
-        }
-        ,
-        {
-            id: 4,
-
-            title: 'pressure',
-            data: weather.pressure,
-            icon: <FaWeightHanging />,
+    const {name,description, icon, humidity, feels_like, temp, temp_max, temp_min, country, speed} = props.currentweather
+  return (
+    
+        <div className='section_descriptions'>
+            <div className='card'>
+                <div className='description__card_icon'>
+                <FaArrowDown />
             
-            unit: 'hPa'
-
-        },
-        {
-            id: 5,
-
-            title: 'humidity',
-            data: weather.humidity,
-            icon: <WiHumidity />,
-            unit: '%'
-        },
-        {
-            id: 6,
-
-            title: 'wind speed'
-            , data: weather.speed.toFixed(),
-            icon: <TiWeatherWindy />,
-            unit: windUnit,
-        }
-    ]
-    return (
-        <div className='section__descriptions'>
-
-            {cards.map(({ id, title, data, unit , icon})=>(
-            <div key={id} className='card'>
-
-                <div className='description__card-icon'>
-                    <small>{title} {icon}</small>
-
+                <h3>min temp</h3>
 
                 </div>
-                <h2 >{`${data} ${unit}`}</h2>
-
-
+                <h3>{Math.round(temp_min)} °C</h3>
             </div>
+            <div className='card'>
+                <div className='description__card_icon'>
+                <FaArrowDown />
+                
+                <h3>max temp</h3>
 
-       ) )}
+                </div>
+            <h3>{Math.round(temp_max) }°{tempunits} </h3>
+            </div>
+            <div className='card'>
+                <div className='description__card_icon'>
+                <FaArrowDown />
+            
+                <h3>Wind speed m/s</h3>
 
-        </div>
-    )
+                </div>
+                <h3>{Math.round(speed)}</h3>
+            </div>
+            <div className='card'>
+                <div className='description__card_icon'>
+                <FaArrowDown />
+           
+                <h3>Feels like</h3>
+
+                </div>
+                <h3>{`${Math.round(feels_like)}`} °C</h3>
+            </div>
+            <div className='card'>
+                <div className='description__card_icon'>
+                <FaArrowDown /> <h3>humidity</h3>
+
+                </div>
+                <h3>{humidity}</h3>
+            </div>
+          
+
+            
+      
+    </div>
+  )
 }
 
-
-export default Descriptions
