@@ -12,12 +12,14 @@ export const Home = () => {
     const [city, setCity] = useState('London')
     const [WeatherNow, setWeatherNow] = useState([])
     const [units, setUnits] = useState('metric')
+    const [error, setError] = useState('Data does not exist')
 const [Bg, setBg] = useState({coldweather})
 
    
     
 useEffect(() => {
     const CurrentWeatherData = async () => {
+      try{
       const data = await CurrentWeather(city, units);
       setWeatherNow(data);
       console.log(data);
@@ -32,7 +34,11 @@ useEffect(() => {
       } else if (lowerthreshold< data.temp < higherthreshhold){
         setBg(normal);
       }
-    };
+    }catch(error){
+      setError(error.message)
+      
+    }}
+
   
     CurrentWeatherData();
   }, [units, city]);
