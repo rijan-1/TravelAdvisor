@@ -1,5 +1,5 @@
 import './NavBar.css';
-
+import {Link} from 'react-router-dom'
 export const NavBar = () => {
   return (
     <div className="menu-container">
@@ -16,9 +16,11 @@ export const NavBar = () => {
 
       <div className="menu-pane">
         <div className='ButtonToPages'>
-      <button>Current Weather</button>
-        <button>Hourly Weather</button>
-        <button>Daily Weather</button>
+      <Link to='/'>
+        <button>Current Weather</button>
+        </Link>
+        <Link to='../pages/HourlyWeather/HourlyWeather' ><button>Hourly Weather</button></Link>
+        <Link to='../pages/DailyWeather/DailyWeather'><button >Daily Weather</button></Link>
         <button>Weekly Weather</button>
         <button>Air quality Data</button>
         <button>Health Advice</button>

@@ -2,6 +2,7 @@ import './Home.css'
 import coldweather from "../assets/cold.webp";
 import hotweather from "../assets/hot.webp";
 import normal from "../assets/normal.webp";
+import veryhot from '../assets/veryhot.webp'
 import cloudyicon from "../assets/cloudy.png";
 import { Descriptions } from '../components/descriptions';
 import {CurrentWeather} from  '../WeatherService'
@@ -23,18 +24,25 @@ useEffect(() => {
       const data = await CurrentWeather(city, units);
       setWeatherNow(data);
       console.log(data);
+
+      const subZero = units ==='metric' ? 0: 32;
   
-      const lowerthreshold = units === 'metric' ? 10 : 45;
-      const higherthreshhold = units === 'metric'? 30 : 75
+      const lowerthreshold = units === 'metric' ? 10 : 50;
+      const higherthreshhold = units === 'metric'? 25 : 75
   
-      if (data.temp < lowerthreshold) {
+      if (data.temp < subZero) {
         setBg(coldweather);
-      } else if (data.temp > higherthreshhold) {
-        setBg(hotweather);
-      } else if (lowerthreshold< data.temp < higherthreshhold){
+      } else if (subZero< data.temp & data.temp < lowerthreshold){
         setBg(normal);
-      }
-    }catch(error){
+      
+    } else if (lowerthreshold<data.temp & data.temp < higherthreshhold) {
+        setBg(hotweather);
+      
+    }else if (data.temp > higherthreshhold){
+      setBg(veryhot)
+    }
+  
+  }catch(error){
       setError(error.message)
       
     }}

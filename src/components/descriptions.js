@@ -1,5 +1,8 @@
 import { FaArrowDown } from "react-icons/fa6";
 import { FaArrowUp } from "react-icons/fa";
+import { LuWind } from "react-icons/lu";
+import { CiFaceSmile } from "react-icons/ci";
+import { WiHumidity } from "react-icons/wi";
 import './description.css'
 export const Descriptions = (props, units) => {
    const tempunits = units ==='metric'? 'C':'F'
@@ -19,7 +22,7 @@ export const Descriptions = (props, units) => {
             </div>
             <div className='card'>
                 <div className='description__card_icon'>
-                <FaArrowDown />
+                <FaArrowUp />
                 
                 <h3>max temp</h3>
 
@@ -28,16 +31,16 @@ export const Descriptions = (props, units) => {
             </div>
             <div className='card'>
                 <div className='description__card_icon'>
-                <FaArrowDown />
+                <LuWind />
             
-                <h3>Wind speed m/s</h3>
+                <h3>Wind speed </h3>
 
                 </div>
-                <h3>{Math.round(speed)}</h3>
+                <h3>{Math.round(speed)}m/s</h3>
             </div>
             <div className='card'>
                 <div className='description__card_icon'>
-                <FaArrowDown />
+                <CiFaceSmile />
            
                 <h3>Feels like</h3>
 
@@ -46,10 +49,10 @@ export const Descriptions = (props, units) => {
             </div>
             <div className='card'>
                 <div className='description__card_icon'>
-                <FaArrowDown /> <h3>humidity</h3>
+                <WiHumidity /> <h3 >humidity</h3>
 
                 </div>
-                <h3>{humidity}</h3>
+                <h3 >{humidity}%</h3>
             </div>
           
 
