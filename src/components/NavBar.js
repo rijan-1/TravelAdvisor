@@ -16,7 +16,7 @@ export const NavBar = () => {
         </label>
       </div>
 
-      <div className="menu-pane">
+      <div className="menu-pane" >
         <div className='ButtonToPages'>
       <Link to='/'>
         <button>Current Weather</button>

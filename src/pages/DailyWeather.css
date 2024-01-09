@@ -1,17 +1,29 @@
 .dailyWeatherBoxes{
 
     height: 50px;
-    width: 500px;
-    z-index: 999;
-    background-color: black;
+    width:89%;
+
+    background-color: transparent;
     color: white;
-    justiu
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
+    margin-left: 20px;
+    position: relative;
+
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+   
+  
+    
+   
+  
 }
 
 .dailyWeatherSection{
 
-    height: 700px;
-    width: 600px;
+    height: 180%;
+    width: 60%;
     background-color: black;
     z-index: 999;
     display: flex;
@@ -19,7 +31,14 @@
     align-items: center;
     margin: auto;
     position: relative;
-    top: 200px;
+    top: -80%;
     background-color: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border-radius: 10px;
+   
+    
 
 }
