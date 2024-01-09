@@ -2,7 +2,9 @@ import './NavBar.css';
 import {Link} from 'react-router-dom'
 export const NavBar = () => {
   return (
+    
     <div className="menu-container">
+
       <input type="checkbox" id="openmenu" className="hamburger-checkbox" />
 
       <div className="hamburger-icon">
@@ -19,11 +21,11 @@ export const NavBar = () => {
       <Link to='/'>
         <button>Current Weather</button>
         </Link>
-        <Link to='../pages/HourlyWeather/HourlyWeather' ><button>Hourly Weather</button></Link>
+        <Link to='../pages/HourlyWeather/HourlyWeather'  ><button>Hourly Weather</button></Link>
         <Link to='../pages/DailyWeather/DailyWeather'><button >Daily Weather</button></Link>
-        <button>Weekly Weather</button>
-        <button>Air quality Data</button>
-        <button>Health Advice</button>
+        <Link to='../pages/WeeklyWeather/WeeklyWeather'><button>Weekly Weather</button></Link>
+        <Link to='../pages/AirQualityData/AirQualityData'><button>Air quality Data</button></Link>
+        <Link to='../pages/HealthAdvice/HealthAdvice'><button>Health Advice</button></Link>
        </div>
       </div>
      

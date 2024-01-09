@@ -7,6 +7,8 @@ import cloudyicon from "../assets/cloudy.png";
 import { Descriptions } from '../components/descriptions';
 import {CurrentWeather} from  '../WeatherService'
 import { useEffect ,useState} from 'react';
+import { MyContext } from '../App';
+import { useContext } from 'react';
 
 
 export const Home = () => {
@@ -16,6 +18,9 @@ export const Home = () => {
     const [error, setError] = useState('Data does not exist')
 const [Bg, setBg] = useState({coldweather})
 
+const {setGlobalCityName} = useContext(MyContext)
+
+
    
     
 useEffect(() => {
@@ -24,6 +29,7 @@ useEffect(() => {
       const data = await CurrentWeather(city, units);
       setWeatherNow(data);
       console.log(data);
+      
 
       const subZero = units ==='metric' ? 0: 32;
   
@@ -57,6 +63,7 @@ const EnteredCity =(e)=>{
         setCity(e.target.value)
         e.currentTarget.blur()
     }
+    setGlobalCityName(e.target.value)
 
 }
 const changeUnits = () => {

@@ -1,0 +1,25 @@
+.dailyWeatherBoxes{
+
+    height: 50px;
+    width: 500px;
+    z-index: 999;
+    background-color: black;
+    color: white;
+    justiu
+}
+
+.dailyWeatherSection{
+
+    height: 700px;
+    width: 600px;
+    background-color: black;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    position: relative;
+    top: 200px;
+    background-color: rgba(0,0,0,0.8);
+
+}

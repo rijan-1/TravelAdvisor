@@ -4,12 +4,13 @@
 .ButtonToPages{
 display: flex;
 flex-direction: column;
-width: 39.5vh;
+width: 50vh;
 position: absolute;
-top: 15%;
-left: 32%;
+top: 25%;
+left: 220px;
 gap: 30px
 }
+
 .ButtonToPages button{
     height: 50px;
 }
@@ -117,8 +118,8 @@ div.menu-pane {
   position: absolute;
   transform: translateX(-105vw);
   transform-origin: (0, 0);
-  width: 30vw;
-  height:104%;
+  width: 500px;
+  height:80%;
   transition: 0.6s ease-in-out;
 }
 
