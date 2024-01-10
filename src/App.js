@@ -12,13 +12,15 @@ export const MyContext = createContext()
 const App = () => {
 
   const [GlobalCityName, setGlobalCityName] = useState('London')
+  const [units, setUnits] = useState('metric')
   return (
-    <MyContext.Provider value={{GlobalCityName, setGlobalCityName}}>
+    <MyContext.Provider value={{GlobalCityName, setGlobalCityName, units, setUnits}}>
     <BrowserRouter >
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/pages/DailyWeather/DailyWeather' element={<DailyWeatherFunction/>}/>
+  
       </Routes>
       </BrowserRouter>
 

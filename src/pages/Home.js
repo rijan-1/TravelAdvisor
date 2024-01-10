@@ -12,13 +12,13 @@ import { useContext } from 'react';
 
 
 export const Home = () => {
-    const [city, setCity] = useState('London')
+   
     const [WeatherNow, setWeatherNow] = useState([])
-    const [units, setUnits] = useState('metric')
+   
     const [error, setError] = useState('Data does not exist')
 const [Bg, setBg] = useState({coldweather})
 
-const {setGlobalCityName} = useContext(MyContext)
+const {setGlobalCityName, GlobalCityName, units, setUnits} = useContext(MyContext)
 
 
    
@@ -26,9 +26,9 @@ const {setGlobalCityName} = useContext(MyContext)
 useEffect(() => {
     const CurrentWeatherData = async () => {
       try{
-      const data = await CurrentWeather(city, units);
+      const data = await CurrentWeather(GlobalCityName, units);
       setWeatherNow(data);
-      console.log(data);
+     
       
 
       const subZero = units ==='metric' ? 0: 32;
@@ -55,31 +55,14 @@ useEffect(() => {
 
   
     CurrentWeatherData();
-  }, [units, city]);
-  
+  }, [units, GlobalCityName]);
 
-const EnteredCity =(e)=>{
-    if (e.keyCode === 13){
-        setCity(e.target.value)
-        e.currentTarget.blur()
-    }
-    setGlobalCityName(e.target.value)
-
-}
-const changeUnits = () => {
-    {units === 'imperial'? setUnits('metric') : setUnits('imperial')}
-   
-  };
-  
   return (
 
     <div className='HomeBg' style={{backgroundImage: `url(${Bg})`, backgroundSize:'cover',height:'1000px'}}>
     <div className='Overlay'>
       <div className='contanier'>
-        <div className='section section_input'>
-          <input onKeyDown={EnteredCity} className='searchbar' type ='text' name='city'placeholder='enter city name'  />
-          <button onClick={changeUnits} className='btn'>C</button>
-        </div>
+    
         <div className='section section_temperature'>
           <div className='icon'>
             <h3>{WeatherNow.name}, {WeatherNow.country}</h3>

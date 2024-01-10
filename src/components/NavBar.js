@@ -1,7 +1,10 @@
 import './NavBar.css';
 import {Link} from 'react-router-dom'
+import { SearchBar } from './SearchBar';
 export const NavBar = () => {
   return (
+    <div>
+      <SearchBar/>
     
     <div className="menu-container">
 
@@ -29,6 +32,6 @@ export const NavBar = () => {
        </div>
       </div>
      
-    </div>
+    </div></div>
   );
 };
