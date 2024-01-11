@@ -9,12 +9,14 @@ import {CurrentWeather} from  '../WeatherService'
 import { useEffect ,useState} from 'react';
 import { MyContext } from '../App';
 import { useContext } from 'react';
-
+import { ExtractIcon } from '../WeatherService';
 
 export const Home = () => {
+  
+
    
     const [WeatherNow, setWeatherNow] = useState([])
-   
+   const [icon, setIcon] = useState(null)
     const [error, setError] = useState('Data does not exist')
 const [Bg, setBg] = useState({coldweather})
 
@@ -29,7 +31,7 @@ useEffect(() => {
       const data = await CurrentWeather(GlobalCityName, units);
       setWeatherNow(data);
      
-      
+  
 
       const subZero = units ==='metric' ? 0: 32;
   

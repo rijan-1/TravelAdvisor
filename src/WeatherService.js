@@ -13,9 +13,18 @@ export const CurrentWeather = async (city, units)=>{
     const {name,main:{humidity, feels_like,temp, temp_max, temp_min},sys:{country},wind:{speed}} =Data
     const {description, icon} =Data.weather[0]
 
+ 
+
+
     return {name,description, icon, humidity, feels_like, temp, temp_max, temp_min, country, speed}
 }
+export const ExtractIcon = async (icon)=>{
+   const IconURL = `https://openweathermap.org/img/wn/?=${icon}`
+     const IconData = await axios.get(IconURL).then((res)=>res.data)
+   
 
+     return IconData
+}
 export const DailyWeather = async (city, units) =>{
 
    const DailyWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}&units=${units}`

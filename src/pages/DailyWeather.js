@@ -49,21 +49,21 @@ export const DailyWeatherFunction = () => {
           
 
           {dailyWeatherState.map((weather) => <div className='dailyWeatherBoxes'>    
-            <div style={{display:'flex', justifyContent:'center', gap:'80px'}}>
+            <div style={{display:'flex', flexDirection:'column', gap:'80px'}}>
             <div className='Dailydate'>
               <p>{weather.dt_txt}</p></div>
-              
-            <div className='dailyweatherDescription'>
-              <h4>icon</h4>
+              <div className='DailyTemperature'>
+              <h1 style={{position:'relative', textAlign:'center',fontSize:'50px', top:'-90px'}}>{Math.round(weather.temp_max)}{units==='metric'?' °C':' °F'}</h1>
+            </div>
+           </div> <div className='dailyweatherDescription'>
+              <h4 style={{position:'relative'}}>icon</h4>
 
               <p>{weather.description}</p>
-            </div><div className='DailyTemperature'>
-              <h1>{Math.round(weather.temp_max)}{units==='metric'?' °C':' °F'}</h1>
-            </div></div>
+            </div>
             <div style={{display:'flex', justifyContent:'flex-end', gap:'60px',margin:'0px',padding:'0px', position:'relative', left:'100px' }}>
             <div className='DailyPrecipitation'>
               <p>precepitaion icon</p>
-              <p >{weather.humidity}</p>
+              <p >humidity: {weather.humidity} RH</p>
             </div>
             <div>
               <p>Wind icon</p>
@@ -73,7 +73,7 @@ export const DailyWeatherFunction = () => {
             </div>
    
    
-            <div style={{height:'1.5px',borderWidth:0,fill:'white',backgroundColor:'white', width: "1150px", position:'relative',top:'80px', left:'50px'}}>
+            <div style={{height:'1.5px',borderWidth:0,fill:'white',backgroundColor:'white', width: "1150px", position:'relative',top:'-40px', left:'50px'}}>
         
             </div>
     
