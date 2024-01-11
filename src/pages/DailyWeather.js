@@ -34,12 +34,13 @@ export const DailyWeatherFunction = () => {
 
 
   return (
+
     <div className='HomeBg' style={{ backgroundImage: `url(${normal})`, backgroundSize: 'cover', height: '1000px', width: '100%' }}>
       <div style={{backgroundImage:`url(${cold})`,backgroundSize:'cover', position:'relative', top: '100%'}}>
       <div className='overlay'>
     
 
-
+<div></div>
 
         <div className='dailyWeatherSection'>
           <div className='DailyWeatherHeading'>
@@ -71,19 +72,30 @@ export const DailyWeatherFunction = () => {
             </div>
 
             </div>
-   
-   
-            <div style={{height:'1.5px',borderWidth:0,fill:'white',backgroundColor:'white', width: "1150px", position:'relative',top:'-40px', left:'50px'}}>
-        
-            </div>
-    
-           
-           
+            <div className='DailyWeatherDescription'>
 
+              <div className='DescriptionDailyWeatherBox'>
+                <div className='iconDescriptionDailyWeather'>
+                  <p>Icon</p>
+                  <h3>Title</h3>
+                  </div>
+                  <div className='DailyWeatherDescriptionNumber'>
+                    <h2>21 C</h2>
+                    </div>
+                
+
+
+              </div>
+   
+   
+          
+           
+           
+</div>
           </div>
           ) 
           }
-          
+      
 
 
       
