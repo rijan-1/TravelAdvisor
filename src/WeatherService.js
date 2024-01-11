@@ -16,11 +16,15 @@ export const CurrentWeather = async (city, units)=>{
     return {name,description, icon, humidity, feels_like, temp, temp_max, temp_min, country, speed}
 }
 
-export const DailyWeather = async (city) =>{
+export const DailyWeather = async (city, units) =>{
 
-   const DailyWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}`
+   const DailyWeatherURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${APIKEY}&units=${units}`
 
    const ExtractedDailyData = await axios.get(DailyWeatherURL).then((res)=>res.data)
+
+   const {city: {name}} = ExtractedDailyData
+   const {city:{country}} = ExtractedDailyData
+  
 
  const filteredData = ExtractedDailyData.list.filter(item => item.dt_txt.includes('12:00:00'))
 
@@ -33,7 +37,7 @@ return{
 }
 
 })
-return extractedArray
+return [extractedArray, name,country]
     
     
 
