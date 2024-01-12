@@ -79,11 +79,12 @@ body {
 .hamburger-icon span {
   height: 8px;
   width: 60px;
-  background-color: black;
+  background-color: white;
   display: block;
   margin: 5px 0px 5px 0px;
   transition: 0.7s ease-in-out;
   transform: none;
+  border-radius: 4px;
 }
 
 #openmenu:checked ~ .menu-pane {

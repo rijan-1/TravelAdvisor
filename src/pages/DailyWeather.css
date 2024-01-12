@@ -1,57 +1,127 @@
-.dailyWeatherBoxes{
+.dailyWeatherBoxes{ 
 
-    height: 50px;
-    width:89%;
+    height: 50px; 
 
-    background-color: transparent;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    gap: 0px;
-    margin-left: 20px;
-    position: relative;
-    top: -450px;
+    width:89%; 
 
-    margin-bottom: 0px;
-    flex-wrap: wrap;
+    background-color: transparent; 
+
+    color: white; 
+
+    display: flex; 
+
+    justify-content: space-between; 
+
+    gap: 50px; 
+
+    margin-left: 20px; 
+
+    position: relative; 
+
+     
+
    
-  
-.DailyWeatherDescription{
 
-position: relative;
-top: -200%
-}
-  
-}
-.DailyWeatherHeading{
-    display: flex;
-    flex-direction: column;
-    color: aliceblue;
-    align-items: center;
-    margin: 0px;
-    position: relative;
-    bottom: 90px;
-}
-   
-.dailyWeatherSection{
+    margin-bottom: 130px; 
 
-    height: 180%;
-    width: 65%;
-    background-color: black;
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    position: relative;
-    top: -80%;
-    background-color: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: space-between;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    border-radius: 10px;
-   
+    flex-wrap: wrap; 
+
     
 
-}
+   
+
+} 
+
+.DailyWeatherDescription{ 
+
+    color: white; 
+
+    display: grid; 
+
+    grid-template-columns: 1fr 1fr ; 
+
+    gap: 20% 
+
+    
+
+}  
+
+.DescriptionDailyWeatherBox{ 
+
+    display: flex; 
+
+    justify-content: space-between; 
+
+} 
+
+.DailyWeatherHeading{ 
+
+    display: flex; 
+
+    flex-direction: column; 
+
+    color: aliceblue; 
+
+    align-items: center; 
+
+    margin: 0px; 
+
+    position: relative; 
+
+    bottom: 40px; 
+
+} 
+
+    
+
+.dailyWeatherSection{ 
+
+    height: 300%; 
+
+    width: 65%; 
+
+    background-color: black; 
+
+    z-index: 999; 
+
+    display: flex; 
+
+    justify-content: center; 
+
+    align-items: center; 
+
+    margin: auto; 
+
+    position: relative; 
+
+    top: -97%; 
+
+    background-color: rgba(0,0,0,0.8); 
+
+    display: flex; 
+
+    justify-content: space-between; 
+
+    display: grid; 
+
+    grid-template-columns: repeat(1, 1fr); 
+
+    border-radius: 10px; 
+
+    padding-left: 20px; 
+
+    padding-right: 30px; 
+
+    
+
+     
+
+} 
+
+.dailyWeatherContainer{ 
+
+    position: relative; 
+
+    top: -200px 
+
+} 
