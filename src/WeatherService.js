@@ -73,3 +73,25 @@ return [extractedArray, name,country]
      
 
 } 
+
+
+export const GeoCodingApi = async (city)=>{
+
+    const GeoCodinnUrl = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=3&appid=${APIKEY}`
+    const Data = await axios.get(GeoCodinnUrl).then(res=> res.data)
+    const {lat, lon,name, country} = Data[0]
+
+
+
+    return {lat,lon, name, country}
+}
+
+export const CurrentAirQualityAPI = async()=>{
+    const CurrentAirQualityAPIURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=51.5073219&lon=-0.1276474&appid=1a86bd2d037ea5faa1b8661f5281a8c9`
+    try {
+        let DataAirQuality = await axios.get(CurrentAirQualityAPIURL).then((res) => res.data);
+        console.log(DataAirQuality[0]);
+      } catch (error) {
+        console.error(error);
+      }
+    }

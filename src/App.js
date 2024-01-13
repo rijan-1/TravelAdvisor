@@ -4,8 +4,9 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import {DailyWeatherFunction} from './pages/DailyWeather'
 import { useState } from 'react';
 import { createContext } from "react";
-
+import { CurrentAirQuality } from './pages/CurrentAirQuality';
 export const MyContext = createContext()
+
 
 
 
@@ -20,6 +21,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/pages/DailyWeather/DailyWeather' element={<DailyWeatherFunction/>}/>
+      <Route path='/pages/CurrentAirQuality' element = {<CurrentAirQuality/>}/>
   
       </Routes>
       </BrowserRouter>

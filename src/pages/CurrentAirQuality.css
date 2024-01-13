@@ -1,0 +1,30 @@
+.AirQualityBackGround{
+ 
+    display: flex;
+    justify-content: center;
+    height: 1000px;
+    width: 100%;
+    background-size:cover;
+    color: white
+}
+
+.AirqualityMainContent{
+
+    display: flex;
+
+
+ 
+    background-color: rgba(0,0,0,0.9);
+    height: 100%;
+    width: 60%;
+    position: relative;
+    top: 300px;
+    border-radius: 25px;
+ 
+}
+
+.AirQualityComponent{
+    position: absolute;
+    top:48%;
+    right:80%
+}
