@@ -87,11 +87,13 @@ export const GeoCodingApi = async (city)=>{
 }
 
 export const CurrentAirQualityAPI = async()=>{
-    const CurrentAirQualityAPIURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=51.5073219&lon=-0.1276474&appid=1a86bd2d037ea5faa1b8661f5281a8c9`
-    try {
-        let DataAirQuality = await axios.get(CurrentAirQualityAPIURL).then((res) => res.data);
-        console.log(DataAirQuality[0]);
-      } catch (error) {
-        console.error(error);
-      }
-    }
+    const CurrentAirQualityAPIURL = 'https://api.openweathermap.org/data/2.5/air_pollution?lat=51.5073219&lon=-0.1276474&appid=1a86bd2d037ea5faa1b8661f5281a8c9'
+
+        const DataAirQuality = await axios.get(CurrentAirQualityAPIURL).then((res) => res.data);
+    
+
+        const {components:{co, nh3,no,no2,o3,so2}, main:{aqi}} = DataAirQuality.list[0]
+        console.log({components:{co, nh3,no,no2,o3,so2}, main:{aqi}} )
+   
+        return {co, nh3,no,no2,o3,so2, aqi} 
+}

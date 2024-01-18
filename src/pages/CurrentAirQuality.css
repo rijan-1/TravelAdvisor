@@ -26,5 +26,29 @@
 .AirQualityComponent{
     position: absolute;
     top:48%;
-    right:80%
+    right:80%;
+    
+}
+
+.airqualitycomponents{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70%;
+    position: absolute;
+    left: 30%
+}
+.airqualitycomponents2{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 70%;
+    position: absolute;
+    left: 30%;
+    top: 250px
+
+}
+
+.Airqualityttitle2{
+    position: absolute;
+    width: 300px;
+    left: 35%
 }

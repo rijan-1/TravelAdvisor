@@ -7,7 +7,7 @@ import { useEffect ,useState} from 'react'
 export const CurrentAirQuality = () => {
 
     const [CoordnatesState,setCoordnatesState] = useState(null)
-    const [currentAirQualityState, setAirQualityState] = useState(null)
+    const [currentAirQualityState, setAirQualityState] = useState({})
 
     const VeryPolutated = 'https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
@@ -25,10 +25,10 @@ export const CurrentAirQuality = () => {
 
     useEffect(()=>{
         const HandleCurrentAirQualkityData = async()=>{
-            if (CoordnatesState){
-            const ExtractCurrentAirQuality = await CurrentAirQualityAPI(CoordnatesState)
+      
+            const ExtractCurrentAirQuality = await CurrentAirQualityAPI()
             setAirQualityState(ExtractCurrentAirQuality)
-       } }
+        }
         HandleCurrentAirQualkityData()
 
     },[])
@@ -37,15 +37,16 @@ export const CurrentAirQuality = () => {
 
             <div className='AirqualityMainContent'>
                 <div className='Airqualityttitle'>
-                    <h2 >Today air quality- Uxbridge England</h2>
+
+                    <h2 className='Airqualityttitle2'>Today air quality- Uxbridge England</h2>
                     
 
                 </div>
                 <div className='AirQualityIndex'>
-<img style={{position:'relative', right:'15%',top:'18%'}} src={Ellipse} alt='ellipse'/>
-<h1 style={{position:'relative', right:'0%',fontSize:'45px'}}>8 AQI</h1>
+<img style={{position:'relative', right:'-10%',top:'18%'}} src={Ellipse} alt='ellipse'/>
+<h1 style={{position:'relative', right:'-35%',fontSize:'45px'}}>{currentAirQualityState.aqi}  AQI</h1>
                 </div>
-                <div style={{position:'relative', right:'0%',top:'20%'}} className='airqualitytitle'>
+                <div style={{position:'relative', right:'-5%',top:'20%'}} className='airqualitytitle'>
                     <h1>Poor</h1>
                     <h4 style={{width:'85%'}}>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur id nec massa</h4>
 
@@ -58,10 +59,40 @@ export const CurrentAirQuality = () => {
                         <h2>All Pollutants</h2>
                         <div className='airqualitycomponents'>
                             <div className='airqualitycomponentname'>
-                                <h3 style={{position:'absolute',top:'100px',left:'40px',height:'60px',width:'60px'}}>Co</h3>
-                            <img style={{position:'relative',top:'30px',left:'20px',height:'80px',width:'80px'}} src={Ellipse} alt='ellipse'/>
-<h4  style={{position:'relative',bottom:'50px',right:'-140px',height:'100px',width:'100px'}}>201</h4>
+                                <h3 style={{position:'absolute',top:'45px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.co)}co</h3>
+                            <img style={{position:'relative',top:'30px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
                             </div>
+                            <div className='airqualitycomponentname'>
+                                <h3 style={{position:'relative',top:'55px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.nh3)}nh3</h3>
+                            <img style={{position:'relative',top:'-74px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
+                            </div>
+                            <div className='airqualitycomponentname'>
+                                <h3 style={{position:'relative',top:'55px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.no)}no</h3>
+                            <img style={{position:'relative',top:'-75px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
+                            </div>
+                            
+                     
+                        </div>
+                        <div className='airqualitycomponents2'>
+                            <div className='airqualitycomponentname'>
+                                <h3 style={{position:'absolute',top:'50px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.no2)}no2</h3>
+                            <img style={{position:'relative',top:'30px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
+                            </div>
+                            <div className='airqualitycomponentname'>
+                                <h3 style={{position:'relative',top:'55px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.o3)}o3</h3>
+                            <img style={{position:'relative',top:'-70px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
+                            </div>
+                            <div className='airqualitycomponentname'>
+                                <h3 style={{position:'relative',top:'60px',left:'40px',height:'60px',width:'60px'}}>{Math.round(currentAirQualityState.so2)}so2</h3>
+                            <img style={{position:'relative',top:'-70px',left:'20px',height:'120px',width:'120px'}} src={Ellipse} alt='ellipse'/>
+
+                            </div>
+                            
                           
                         </div>
                         
