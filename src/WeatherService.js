@@ -77,8 +77,9 @@ return [extractedArray, name,country]
 
 export const GeoCodingApi = async (city)=>{
 
-    const GeoCodinnUrl = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=3&appid=${APIKEY}`
+    const GeoCodinnUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=3&appid=${APIKEY}`
     const Data = await axios.get(GeoCodinnUrl).then(res=> res.data)
+    console.log(Data)
     const {lat, lon,name, country} = Data[0]
 
 
@@ -93,7 +94,7 @@ export const CurrentAirQualityAPI = async()=>{
     
 
         const {components:{co, nh3,no,no2,o3,so2}, main:{aqi}} = DataAirQuality.list[0]
-        console.log({components:{co, nh3,no,no2,o3,so2}, main:{aqi}} )
+     
    
         return {co, nh3,no,no2,o3,so2, aqi} 
 }

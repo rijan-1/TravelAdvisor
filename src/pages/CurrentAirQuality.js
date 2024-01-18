@@ -1,12 +1,13 @@
 import {GeoCodingApi, CurrentAirQualityAPI} from '../WeatherService'
 import './CurrentAirQuality.css'
 import Ellipse from '../assets/Ellipse 5.png'
-import { useEffect ,useState} from 'react'
-
+import { useEffect ,useState, useContext} from 'react'
+import {MyContext} from '../App'
 
 export const CurrentAirQuality = () => {
+    const {GlobalCityName} = useContext(MyContext)
 
-    const [CoordnatesState,setCoordnatesState] = useState(null)
+    const [CoordnatesState,setCoordnatesState] = useState({})
     const [currentAirQualityState, setAirQualityState] = useState({})
 
     const VeryPolutated = 'https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
@@ -14,7 +15,7 @@ export const CurrentAirQuality = () => {
     useEffect(()=>{
 
         const HandleGeoCodingAPI = async()=>{
-            const CoordnatesWhole = await GeoCodingApi('London')
+            const CoordnatesWhole = await GeoCodingApi(GlobalCityName)
          
             setCoordnatesState(CoordnatesWhole)
             
@@ -38,7 +39,7 @@ export const CurrentAirQuality = () => {
             <div className='AirqualityMainContent'>
                 <div className='Airqualityttitle'>
 
-                    <h2 className='Airqualityttitle2'>Today air quality- Uxbridge England</h2>
+                    <h2 className='Airqualityttitle2'>Today air quality- {CoordnatesState.name},{CoordnatesState.country} </h2>
                     
 
                 </div>
