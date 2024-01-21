@@ -3,9 +3,10 @@ import './CurrentAirQuality.css'
 import Ellipse from '../assets/Ellipse 5.png'
 import { useEffect ,useState, useContext} from 'react'
 import {MyContext} from '../App'
+import { useNavigate  } from 'react-router-dom';
 
 export const CurrentAirQuality = () => {
-    const {GlobalCityName} = useContext(MyContext)
+    const {GlobalCityName, isLoggedIn} = useContext(MyContext)
 
     const [CoordnatesState,setCoordnatesState] = useState({lat: 51.5073219, lon: -0.1276474})
     const [currentAirQualityState, setAirQualityState] = useState({})
@@ -38,7 +39,7 @@ export const CurrentAirQuality = () => {
                 console.error('Bad Request: ');
                 // Or return an error object or appropriate value
               }
-            console.log(CoordnatesState);
+          
             setAirQualityState(ExtractCurrentAirQuality);
           } catch (error) {
             // Handle other errors, e.g., network issues
@@ -65,8 +66,11 @@ const airqualityValue = ()=>{
 useEffect(()=>{
     airqualityValue()
 },[currentAirQualityState.aqi])
-
-      
+const navigate = useNavigate();
+if (!isLoggedIn) {
+    // If the user is not logged in, redirect to the login page
+    return navigate("/Login") ;
+  }
   return (
     <div className='AirQualityBackGround' style={{backgroundImage:`url(${VeryPolutated})`}}>
 

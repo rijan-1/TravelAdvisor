@@ -23,10 +23,16 @@ export const SearchBar = () => {
     <div className='SearchBarContainer'>
      
         <div className='section section_input'>
-          <input style={{position:'relative', top: '0px', width:'24%', height:'40px'}} onKeyDown={EnteredCity} className='searchbar' type ='text' name='city'placeholder='enter city name'  />
-          <button onClick={changeUnits} className='btn'>C</button>
+          <input style={{position:'relative', top: '0px', width:'24%', height:'40px',zIndex:'1000'}} onKeyDown={EnteredCity} className='searchbar' type ='text' name='city'placeholder='enter city name'  />
+          <button style={{zIndex:'1000'}} onClick={changeUnits} className='btn'>C</button>
         </div>
     <div className ='menuContainer'>  </div>
+    <div className='ButtonToPagesBottomBar' style={{zIndex:'999', position:'absolute', top:'11%',display:'flex',justifyContent:'flex-end', }}>
+    <Link to='../Login'><button style={{borderTop:'solid white',borderBottom:'solid white',borderRadius:'10px'}} >Profile</button></Link>
+        <Link to='../Register' style={{borderTop:'solid white',borderBottom:'solid white',borderRadius:'20px'}}><button>Register</button></Link>
+    
+
+    </div>
     <div className='ButtonToPagesBottomBar'>
       <Link to='/'>
         <button>Current Weather</button>

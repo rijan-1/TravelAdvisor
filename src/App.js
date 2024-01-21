@@ -6,6 +6,9 @@ import { useState } from 'react';
 import { createContext } from "react";
 import { CurrentAirQuality } from './pages/CurrentAirQuality';
 import {HealthAdvice} from './pages/HealthAdvice'
+import {RegistrationForm} from './Login&Register/Register'
+import {LoginForm} from './Login&Register/Login'
+
 export const MyContext = createContext()
 
 
@@ -13,18 +16,24 @@ export const MyContext = createContext()
 
 const App = () => {
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   const [GlobalCityName, setGlobalCityName] = useState('London')
   const [units, setUnits] = useState('metric')
   return (
-    <MyContext.Provider value={{GlobalCityName, setGlobalCityName, units, setUnits}}>
+    <MyContext.Provider value={{GlobalCityName, setGlobalCityName, units, setUnits, isLoggedIn, setIsLoggedIn}}>
     <BrowserRouter >
     <NavBar/>
     <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/pages/DailyWeather/DailyWeather' element={<DailyWeatherFunction/>}/>
-      <Route path='/pages/CurrentAirQuality' element = {<CurrentAirQuality/>}/>
+      <Route
+            path="/pages/CurrentAirQuality"
+            element={<CurrentAirQuality />}
+          />
       <Route path='/pages/HealthAdvice' element={<HealthAdvice/>}/>
-  
+      <Route path='/Register' element={<RegistrationForm/>}/>
+      <Route path='/Login' element={<LoginForm/>}/>
       </Routes>
       </BrowserRouter>
 

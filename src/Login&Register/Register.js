@@ -1,9 +1,10 @@
-// RegistrationForm.js
+import './Register.css'
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+export const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [sccessful, setSuccessfull] = useState('')
 
   const handleRegister = async () => {
     // Send registration data to the FastAPI backend
@@ -18,13 +19,17 @@ const RegistrationForm = () => {
     if (response.ok) {
       const user = await response.json();
       console.log('Registration successful:', user);
+      setSuccessfull('Registeration Successful')
     } else {
       console.error('Registration failed');
+      setSuccessfull('')
     }
   };
 
   return (
-    <div>
+    <div className='RegisterBakcground'>
+      <div className='RegisterFormcss'>
+
       <h1>Registration</h1>
  
       <input
@@ -38,8 +43,8 @@ const RegistrationForm = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleRegister}>Register</button>
-    </div>
+      {sccessful}
+    </div></div>
   );
 };
 
-export default RegistrationForm;
