@@ -30,24 +30,37 @@ export const DailyWeatherFunction = () => {
   const [countryNameState, setCountryNameState] = useState(''); 
 
   const { GlobalCityName, units } = useContext(MyContext); 
+  const [healthAdviceMessage, setHealthAdviceMessage] = useState('')
 
-  useEffect(() => { 
+  const handleSetMessage =()=>{
+if (dailyWeatherState.temp > 25){
+  setHealthAdviceMessage('Stay Hydrated: Drink plenty of water throughout the day to stay hydrated. Avoid excessive caffeine and alcohol consumption as they can lead to dehydration.')
+}else if(dailyWeatherState.temp < 25){
+  setHealthAdviceMessage('Dress Appropriately: Wear clothing that suits the weather. Layering is often a good choice, allowing you to adjust your clothing as the temperature fluctuates.')
+}  }
+useEffect(()=>{
+  handleSetMessage()
 
-    const HandleDailyWeatherData = async () => { 
+},[dailyWeatherState.temp])
 
-      const [DailyWeatherLink, name, country] = await DailyWeather(GlobalCityName, units); 
 
-      setDailyWeatherState(DailyWeatherLink); 
 
-      setCityNameState(name); 
-
-      setCountryNameState(country); 
-
-    }; 
-
-    HandleDailyWeatherData(); 
-
-  }, [GlobalCityName, units]); 
+  useEffect(() => {
+    const HandleDailyWeatherData = async () => {
+      try {
+        const [DailyWeatherLink, name, country] = await DailyWeather(GlobalCityName, units);
+        setDailyWeatherState(DailyWeatherLink);
+        setCityNameState(name);
+        setCountryNameState(country);
+      } catch (error) {
+        console.error('An error occurred:', error);
+        // You can handle the error here, such as setting an error state or displaying an error message.
+      }
+    };
+  
+    HandleDailyWeatherData();
+  }, [GlobalCityName, units]);
+  
 
   return ( 
 
@@ -99,10 +112,10 @@ export const DailyWeatherFunction = () => {
 
                     <img src={weather.iconId}/> 
 
-                    <h4 style={{position:'relative',right:'40%',bottom:'20px', fontSize:'20px'}}>{weather.description}</h4> 
+                    <h4 style={{position:'relative',right:'40%',bottom:'20px', fontSize:'20px'}}>{weather.description}  </h4> 
 
                   </div> 
-
+                  
                   <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '60px', margin: '0px', padding: '0px', position: 'relative', left: '100px' }}> 
 
                     <div style={{position:'relative',bottom:'15px'}}className='DailyPrecipitation'> 

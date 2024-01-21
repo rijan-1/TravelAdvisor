@@ -1,0 +1,7 @@
+.HealthAdviceBakcground{
+    position: absolute;
+    background-color: rgb(197, 224, 248);
+    height: 100%;
+    width:100%;
+    z-index: -10;
+}

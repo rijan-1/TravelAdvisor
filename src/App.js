@@ -5,6 +5,7 @@ import {DailyWeatherFunction} from './pages/DailyWeather'
 import { useState } from 'react';
 import { createContext } from "react";
 import { CurrentAirQuality } from './pages/CurrentAirQuality';
+import {HealthAdvice} from './pages/HealthAdvice'
 export const MyContext = createContext()
 
 
@@ -22,6 +23,7 @@ const App = () => {
       <Route path='/' element={<Home/>} />
       <Route path='/pages/DailyWeather/DailyWeather' element={<DailyWeatherFunction/>}/>
       <Route path='/pages/CurrentAirQuality' element = {<CurrentAirQuality/>}/>
+      <Route path='/pages/HealthAdvice' element={<HealthAdvice/>}/>
   
       </Routes>
       </BrowserRouter>

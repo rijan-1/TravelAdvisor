@@ -28,7 +28,7 @@ export const NavBar = () => {
         <Link to='../pages/DailyWeather/DailyWeather'><button >Daily Weather</button></Link>
         <Link to='../pages/WeeklyWeather/WeeklyWeather'><button>Weekly Weather</button></Link>
         <Link to='../pages/CurrentAirQuality'><button>Air quality Data</button></Link>
-        <Link to='../pages/HealthAdvice/HealthAdvice'><button>Health Advice</button></Link>
+        <Link to='../pages/HealthAdvice'><button>Health Advice</button></Link>
        </div>
       </div>
      

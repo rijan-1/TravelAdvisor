@@ -1,5 +1,5 @@
 import axios from 'axios' 
-
+import { useContext } from 'react'
 const APIKEY = '1843b3aeb0cb1f1701aadcce7c86d38e' 
 
 export const CurrentWeather = async (city, units)=>{ 
@@ -79,22 +79,25 @@ export const GeoCodingApi = async (city)=>{
 
     const GeoCodinnUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=3&appid=${APIKEY}`
     const Data = await axios.get(GeoCodinnUrl).then(res=> res.data)
-    console.log(Data)
+
     const {lat, lon,name, country} = Data[0]
+
 
 
 
     return {lat,lon, name, country}
 }
 
-export const CurrentAirQualityAPI = async()=>{
-    const CurrentAirQualityAPIURL = 'https://api.openweathermap.org/data/2.5/air_pollution?lat=51.5073219&lon=-0.1276474&appid=1a86bd2d037ea5faa1b8661f5281a8c9'
+export const CurrentAirQualityAPI = async (coords) => {
+ 
 
-        const DataAirQuality = await axios.get(CurrentAirQualityAPIURL).then((res) => res.data);
-    
-
-        const {components:{co, nh3,no,no2,o3,so2}, main:{aqi}} = DataAirQuality.list[0]
+    const CurrentAirQualityAPIURL = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords.lat}&lon=${coords.lon}&appid=1a86bd2d037ea5faa1b8661f5281a8c9`;
      
-   
-        return {co, nh3,no,no2,o3,so2, aqi} 
-}
+    const DataAirQuality = await axios.get(CurrentAirQualityAPIURL).then((res) => res.data);
+
+    const { components: { co, nh3, no, no2, o3, so2 }, main: { aqi } } = DataAirQuality.list[0];
+ 
+  
+    return { co, nh3, no, no2, o3, so2, aqi };
+  };
+  

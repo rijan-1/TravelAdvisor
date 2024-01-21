@@ -7,8 +7,9 @@ import {MyContext} from '../App'
 export const CurrentAirQuality = () => {
     const {GlobalCityName} = useContext(MyContext)
 
-    const [CoordnatesState,setCoordnatesState] = useState({})
+    const [CoordnatesState,setCoordnatesState] = useState({lat: 51.5073219, lon: -0.1276474})
     const [currentAirQualityState, setAirQualityState] = useState({})
+    const [aqivalueState, setaqivalueState] = useState('')
 
     const VeryPolutated = 'https://images.pexels.com/photos/459728/pexels-photo-459728.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 
@@ -16,30 +17,63 @@ export const CurrentAirQuality = () => {
 
         const HandleGeoCodingAPI = async()=>{
             const CoordnatesWhole = await GeoCodingApi(GlobalCityName)
+           
+     
          
             setCoordnatesState(CoordnatesWhole)
+            
             
         }
         HandleGeoCodingAPI()
 
-    },[])
+    },[GlobalCityName])
 
-    useEffect(()=>{
-        const HandleCurrentAirQualkityData = async()=>{
+    useEffect(() => {
+        const HandleCurrentAirQualkityData = async () => {
+          try {
+            const ExtractCurrentAirQuality = await CurrentAirQualityAPI(CoordnatesState);
+    
+            if (ExtractCurrentAirQuality.status === 400) {
+                // Handle 400 Bad Request here, e.g., log an error or return a specific value
+                console.error('Bad Request: ');
+                // Or return an error object or appropriate value
+              }
+            console.log(CoordnatesState);
+            setAirQualityState(ExtractCurrentAirQuality);
+          } catch (error) {
+            // Handle other errors, e.g., network issues
+            console.log('Error fetching air quality data: ');
+            // Optionally, you can handle this error here or rethrow it for higher-level error handling
+          }
+        };
       
-            const ExtractCurrentAirQuality = await CurrentAirQualityAPI()
-            setAirQualityState(ExtractCurrentAirQuality)
-        }
-        HandleCurrentAirQualkityData()
+        HandleCurrentAirQualkityData();
+      }, [CoordnatesState]);
+const airqualityValue = ()=>{
+      {if (currentAirQualityState.aqi===1){
+        setaqivalueState('Good')
+    }else if (currentAirQualityState.aqi===2){
+        setaqivalueState('Fair')
+    }else if (currentAirQualityState.aqi===3){
+        setaqivalueState('Moderate')
+    }else if (currentAirQualityState.aqi===4){
+        setaqivalueState('Poor')
+    }else if (currentAirQualityState.aqi===5){
+        setaqivalueState('Very Poor')
+    }}
+}
+useEffect(()=>{
+    airqualityValue()
+},[currentAirQualityState.aqi])
 
-    },[])
+      
   return (
     <div className='AirQualityBackGround' style={{backgroundImage:`url(${VeryPolutated})`}}>
 
             <div className='AirqualityMainContent'>
                 <div className='Airqualityttitle'>
 
-                    <h2 className='Airqualityttitle2'>Today air quality- {CoordnatesState.name},{CoordnatesState.country} </h2>
+                    <h1 className='Airqualityttitle2'>Today air quality- {CoordnatesState.name},{CoordnatesState.country} </h1>
                     
 
                 </div>
@@ -48,7 +82,10 @@ export const CurrentAirQuality = () => {
 <h1 style={{position:'relative', right:'-35%',fontSize:'45px'}}>{currentAirQualityState.aqi}  AQI</h1>
                 </div>
                 <div style={{position:'relative', right:'-5%',top:'20%'}} className='airqualitytitle'>
-                    <h1>Poor</h1>
+                    <h1>{aqivalueState}</h1>
+                
+
+                    
                     <h4 style={{width:'85%'}}>“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam hendrerit nisi sed sollicitudin pellentesque. Nunc posuere purus rhoncus pulvinar aliquam. Ut aliquet tristique nisl vitae volutpat. Nulla aliquet porttitor venenatis. Donec a dui et dui fringilla consectetur id nec massa</h4>
 
                 </div>
