@@ -17,11 +17,12 @@ export const MyContext = createContext()
 const App = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [username, setUsername] = useState('')
 
   const [GlobalCityName, setGlobalCityName] = useState('London')
   const [units, setUnits] = useState('metric')
   return (
-    <MyContext.Provider value={{GlobalCityName, setGlobalCityName, units, setUnits, isLoggedIn, setIsLoggedIn}}>
+    <MyContext.Provider value={{GlobalCityName, setGlobalCityName, units, setUnits, isLoggedIn, setIsLoggedIn,username, setUsername}}>
     <BrowserRouter >
     <NavBar/>
     <Routes>

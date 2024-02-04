@@ -4,24 +4,14 @@ import { MyContext } from '../App';
 import './Register.css'
 import './Login'
 export const LoginForm = () => {
-  const [username, setUsername] = useState('');
+
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [bio, setBio] = useState('');
-  const { isLoggedIn, setIsLoggedIn } = useContext(MyContext);
+  const { isLoggedIn, setIsLoggedIn, username, setUsername} = useContext(MyContext);
 // Track login status
 
 
-useEffect(() => {
-  // Initialize login state and user information from local storage
-  const initialIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-  const initialUsername = localStorage.getItem('username') || '';
-
-
-  setIsLoggedIn(initialIsLoggedIn);
-  setUsername(initialUsername);
-
-}, []);
 
   const handleLogin = async () => {
     try {
@@ -38,11 +28,11 @@ useEffect(() => {
 
       if (response.ok) {
         const user = await response.json();
+   
        
 
         // Store login state and user information in local storage
-        localStorage.setItem('isLoggedIn', true);
-        localStorage.setItem('username', user.username);
+       
 
 
         setIsLoggedIn(true); // Set login status to true
@@ -57,8 +47,7 @@ useEffect(() => {
   
   const handleLogout = () => {
     // Clear login state and user information from local storage
-    localStorage.removeItem('isLoggedIn');
-    localStorage.removeItem('username');
+
 
 
     setIsLoggedIn(false); // Set login status to false
