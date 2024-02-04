@@ -16,76 +16,55 @@ useEffect(() => {
   // Initialize login state and user information from local storage
   const initialIsLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
   const initialUsername = localStorage.getItem('username') || '';
-  const initialBio = localStorage.getItem('bio') || '';
+
 
   setIsLoggedIn(initialIsLoggedIn);
   setUsername(initialUsername);
-  setBio(initialBio);
+
 }, []);
 
   const handleLogin = async () => {
     try {
-      // Send login data to the FastAPI backend
-      const response = await fetch('http://localhost:8000/login/', {
+
+      const options ={
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
-      });
+      }
+      // Send login data to the FastAPI backend
+      const response = await fetch('http://localhost:8000/login/', options)
 
       if (response.ok) {
         const user = await response.json();
-        console.log('Login successful:', user);
+       
 
         // Store login state and user information in local storage
         localStorage.setItem('isLoggedIn', true);
         localStorage.setItem('username', user.username);
-        localStorage.setItem('bio', user.bio);
+
 
         setIsLoggedIn(true); // Set login status to true
         setBio(user.bio); // Set the user's bio
       } else {
-        console.error('Login failed:', response.status);
+        console.error('Login failed:');
       }
     } catch (error) {
       console.error('Login failed:', error);
     }
   };
-  const handleChangePassword = async () => {
-    try {
-      // Send new password data to the FastAPI backend
-      const response = await fetch('http://localhost:8000/change-password/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, newPassword }),
-      });
-
-      if (response.ok) {
-        console.log('Password change successful');
-
-        // Update the local storage and state with the new password
-        localStorage.setItem('password', newPassword);
-        setPassword(newPassword);
-      } else {
-        console.error('Password change failed:', response.status);
-      }
-    } catch (error) {
-      console.error('Password change failed:', error);
-    }
-  };
+  
   const handleLogout = () => {
     // Clear login state and user information from local storage
     localStorage.removeItem('isLoggedIn');
     localStorage.removeItem('username');
-    localStorage.removeItem('bio');
+
 
     setIsLoggedIn(false); // Set login status to false
     setUsername('');
     setPassword('');
-    setBio(''); // Clear the user's bio on logout
+
   };
 
   return (
@@ -95,8 +74,8 @@ useEffect(() => {
           <div>
             <h1>Welcome, {username}!</h1>
             <button onClick={handleLogout}>Logout</button>
-            <h2>Bio:</h2>
-            <p>{bio}</p>
+      
+        
             <h2>Change Password:</h2>
             <input
               type="password"
@@ -105,7 +84,7 @@ useEffect(() => {
               onChange={(e) => setNewPassword(e.target.value)}
               required
             />
-            <button style={{position:'relative', left: '20%'}} onClick={handleChangePassword}>Change Password</button>
+       
           </div>
         ) : (
           <div>

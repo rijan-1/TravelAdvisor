@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const RegistrationForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [successful, setSuccessful] = useState('');
+
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -19,24 +19,25 @@ export const RegistrationForm = () => {
     }
 
     // Send registration data to the FastAPI backend
-    const response = await fetch('http://localhost:8000/register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
+
+const options={
+  method: 'POST',
+  headers:{
+    'content-type':'application/json'
+  },
+  body: JSON.stringify({username, password})
+}
+
+    
+    const response = await fetch('http://localhost:8000/register/',options );
 
     if (response.ok) {
-      const user = await response.json();
-      console.log('Registration successful:', user);
-      setSuccessful('Registration Successful');
-      setError('');
+ 
+
       navigate('/Login');
     } else {
       console.error('Registration failed');
-      setSuccessful('');
-      setError('Registration failed. Please try again.');
+
     }
   };
 
@@ -59,7 +60,7 @@ export const RegistrationForm = () => {
         />
         <button className='RegisterButton' onClick={handleRegister}>Register</button>
         {error && <p className='ErrorMessage'>{error}</p>}
-        {successful && <p className='SuccessMessage'>{successful}</p>}
+      
       </div></div>
     </div>
   );
