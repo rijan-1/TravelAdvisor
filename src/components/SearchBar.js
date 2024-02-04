@@ -37,7 +37,7 @@ export const SearchBar = () => {
       <Link to='/'>
         <button>Current Weather</button>
         </Link>
-        <Link to='../pages/HourlyWeather'  ><button>Hourly Weather</button></Link>
+
         <Link to='../pages/DailyWeather/DailyWeather'><button >Daily Weather</button></Link>
     
         <Link to='../pages/CurrentAirQuality'><button>Air quality Data</button></Link>
